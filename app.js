@@ -1,4 +1,4 @@
-// 2ND VERSION
+// Final draft
 
 const choices = ["rock", "paper", "scissors"];
 const playerDisplay = document.getElementById("playerDisplay");
@@ -10,9 +10,10 @@ let playerScore = 0;
 let computerScore = 0;
 
 function playGame(playerChoice){
-
+    
     const computerChoice = choices[Math.floor(Math.random() * 3)];
     let result = ""; 
+    
 
     if(playerChoice === computerChoice) {
         result = "IT'S A TIE!";
@@ -41,13 +42,14 @@ function playGame(playerChoice){
                 resultDisplay.classList;
                 computerScore++;
                 computerScoreDisplay.textContent = computerScore;
-                break;    
+                break;   
+            
         }
     }
 
     playerDisplay.textContent = `PLAYER:  ${playerChoice}`; 
     computerDisplay.textContent = `COMPUTER:  ${computerChoice}`; 
     resultDisplay.textContent = result;
-
     
-} 
+
+}
