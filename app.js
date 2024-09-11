@@ -1,44 +1,53 @@
-const choices = ["rock", "paper", "scissors"]
+// 2ND VERSION
 
-function game () {
-    //play the game
-    //play five rounds
-    //console based
-    playRound();
-}
+const choices = ["rock", "paper", "scissors"];
+const playerDisplay = document.getElementById("playerDisplay");
+const computerDisplay = document.getElementById("computerDisplay");
+const resultDisplay = document.getElementById("resultDisplay"); 
+const playerScoreDisplay = document.getElementById("playerScoreDisplay");
+const computerScoreDisplay = document.getElementById("computerScoreDisplay");
+let playerScore = 0;
+let computerScore = 0;
 
-function playRound() {
-    const playerSelection = playerChoice();
-    const computerSelection = computerChoice();
-}
+function playGame(playerChoice){
 
-function playerChoice() {
-   //get input from player
-   let input = prompt("Type Rock, Paper or Scissors");
-   while (input == null) {
-       input = prompt("Type Rock, Paper or Scissors"); 
-   }
+    const computerChoice = choices[Math.floor(Math.random() * 3)];
+    let result = ""; 
 
-   input = input.toLowerCase();
-   let check = validateInput(input)
-   if(check == true) {
-      console.log(input);
-   }
-  // console.log(input); 
-}
-
-function computerChoice() {
-   //get random input for computer
-   return choices[Math.floor(Math.random()*choices.length)]
-   
-}
-
-function validateInput(choice) {
-    if(choices.includes(choice)){
-        return true
-    } else {
-        return false
+    if(playerChoice === computerChoice) {
+        result = "IT'S A TIE!";
     }
-}
+    else{
+        switch(playerChoice){
+            case "rock":
+                result = (computerChoice === "scissors") ? "YOU WIN!" : "YOU LOSE!";
+                break;
+            case "paper":
+                result = (computerChoice === "rock") ? "YOU WIN!" : "YOU LOSE!";
+                break;
+            case "scissors":
+                result = (computerChoice === "paper") ? "YOU WIN!" : "YOU LOSE!";
+                break;
 
-game();
+        }
+
+        switch(result){
+            case "YOU WIN!":
+                resultDisplay.classList;
+                playerScore++;
+                playerScoreDisplay.textContent = playerScore;
+                break;
+            case "YOU LOSE!":
+                resultDisplay.classList;
+                computerScore++;
+                computerScoreDisplay.textContent = computerScore;
+                break;    
+        }
+    }
+
+    playerDisplay.textContent = `PLAYER:  ${playerChoice}`; 
+    computerDisplay.textContent = `COMPUTER:  ${computerChoice}`; 
+    resultDisplay.textContent = result;
+
+    
+} 
